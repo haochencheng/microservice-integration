@@ -1,0 +1,3 @@
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+microservice.integration.common.lock.RedisDistributedLock,\
+  microservice.integration.common.util.ProfileUtil
