@@ -22,7 +22,7 @@ if (process.env.NODE_ENV === 'development') {
 }
 
 Vue.use(ElementUI, { locale })
-Vue.use(VueReCaptcha, { siteKey: '6Lf7z5wUAAAAAL6DET5iF571BXeu8uZvT60ENG8b', loaderOptions: {
+Vue.use(VueReCaptcha, { siteKey: '6LchS54UAAAAAMpceDSQ1tMqK48S-AvjWgt2FyvZ', loaderOptions: {
   useRecaptchaNet: true
 }})
 
