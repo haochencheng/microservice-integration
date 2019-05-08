@@ -46,6 +46,8 @@ localhost:4000/app/no
 
 ```
 vue-recaptcha-v3 
+https://developers.google.com/recaptcha/docs/v3
+对应 /src/main.js中相应代码
 ```
 
 访问地址：
