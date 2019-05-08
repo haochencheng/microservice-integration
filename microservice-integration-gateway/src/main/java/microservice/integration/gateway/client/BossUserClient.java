@@ -8,7 +8,7 @@ import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-@FeignClient(value = "BossUserClient",url = "${feignClient.boss.uri}",fallback = BossUserClient.BossUserClientFallBack.class,configuration = FeignConfiguration.class)
+@FeignClient(value = "BossUserClient",fallback = BossUserClient.BossUserClientFallBack.class,configuration = FeignConfiguration.class)
 public interface BossUserClient {
 
     @PostMapping(value = "/user/threadlogin")

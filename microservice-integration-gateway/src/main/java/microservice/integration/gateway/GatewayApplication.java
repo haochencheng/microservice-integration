@@ -12,7 +12,7 @@ import org.springframework.cloud.openfeign.EnableFeignClients;
 @EnableCaching
 @EnableHystrix
 @EnableFeignClients
-@EnableDiscoveryClient
+//@EnableDiscoveryClient
 @SpringBootApplication
 public class GatewayApplication {
 
