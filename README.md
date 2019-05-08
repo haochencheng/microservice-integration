@@ -61,14 +61,39 @@ localhost:9528
 登录用户名密码随意填写
 
 
-
 ## 技术栈
+
+#### springboot版本
+
+```
+2.0.6.RELEASE
+```
+
+#### spirngcloud版本
+
+```
+Finchley.SR2
+```
 
 #### nacos
 
 ```
 https://nacos.io/zh-cn/docs/what-is-nacos.html
 ```
+
+#### open-fegin
+
+```
+https://cloud.spring.io/spring-cloud-openfeign/2.0.x/single/spring-cloud-openfeign.html
+```
+
+#### ribbon客户端负载均衡
+
+```
+https://cloud.spring.io/spring-cloud-static/spring-cloud-netflix/2.1.0.M1/single/spring-cloud-netflix.html
+```
+
+#### `
 
 #### 网关后台 vue-admin-template
 
