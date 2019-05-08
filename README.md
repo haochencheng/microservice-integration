@@ -1,7 +1,7 @@
 # Getting Started
 ## 快速开始
 
-![image-20190508155005132](/Users/haochencheng/Library/Application Support/typora-user-images/image-20190508155005132.png)
+![image-20190508155005132](./doc/image-20190508155005132.png)
 
 创建gateway数据库，执行doc/gateway.sql 。
 
@@ -164,13 +164,13 @@ microservice-integration-app=microservice-integration-app
 
 ​	如图：
 
-![image-20190508150207832](/Users/haochencheng/Library/Application Support/typora-user-images/image-20190508150207832.png)
+![image-20190508150207832](./doc/image-20190508150207832.png)
 
 如使用注册中心，则目标uri为lb://${应用名称}
 
 ​	2.2 配置断言列表
 
-![image-20190508150331356](/Users/haochencheng/Library/Application Support/typora-user-images/image-20190508150331356.png)
+![image-20190508150331356](./doc/image-20190508150331356.png)
 
 配置拦截路径 选择所属路由，如图 /app/**    则拦截 /app/** 所有请求  —>  所属路由的 目标uri
 
@@ -182,7 +182,7 @@ app应用访问地址为 http://127.0.0.1:4000/app/**
 
 如图：
 
-![image-20190508150659212](/Users/haochencheng/Library/Application Support/typora-user-images/image-20190508150659212.png)
+![image-20190508150659212](./doc/image-20190508150659212.png)
 
 2.自定义服务管理
 
