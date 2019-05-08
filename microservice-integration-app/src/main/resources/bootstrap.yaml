@@ -1,0 +1,9 @@
+spring:
+  application:
+    name: microservice-integration-app
+  profiles:
+    active: dev
+server:
+  port: 4002
+  servlet:
+    path: /app

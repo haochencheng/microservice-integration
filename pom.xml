@@ -7,7 +7,10 @@
         <module>microservice-integration-gateway</module>
 		<module>microservice-integration-common</module>
 		<module>microservice-integration-auth</module>
-	</modules>
+        <module>microservice-integration-gateway-report</module>
+        <module>microservice-integration-app</module>
+        <module>microservice-integration-eureka</module>
+    </modules>
     <parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
@@ -26,7 +29,7 @@
 		<java.version>1.8</java.version>
 		<spring-cloud.version>Finchley.SR2</spring-cloud.version>
 		<microservice-integration-common.version>0.0.1-SNAPSHOT</microservice-integration-common.version>
-		<spring-cloud-starter-alibaba.version>0.9.0.RELEASE</spring-cloud-starter-alibaba.version>
+		<spring.cloud.alibaba.version>0.9.0.RELEASE</spring.cloud.alibaba.version>
 		<commons-beanutils>1.9.3</commons-beanutils>
 		<fastjson>1.2.49</fastjson>
 		<commons-lang3>3.8</commons-lang3>
@@ -48,28 +51,25 @@
 				<type>pom</type>
 				<scope>import</scope>
 			</dependency>
+
+			<dependency>
+				<groupId>org.springframework.cloud</groupId>
+				<artifactId>spring-cloud-alibaba-dependencies</artifactId>
+				<version>${spring.cloud.alibaba.version}</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
+
 			<dependency>
 				<groupId>microservice.integration</groupId>
 				<artifactId>microservice-integration-common</artifactId>
 				<version>${project.version}</version>
 			</dependency>
 
-<!--			<dependency>-->
-<!--				<groupId>commons-codec</groupId>-->
-<!--				<artifactId>commons-codec</artifactId>-->
-<!--				<version>${commons-codec.version}</version>-->
-<!--			</dependency>-->
-
 			<dependency>
-				<groupId>org.springframework.cloud</groupId>
-				<artifactId>spring-cloud-starter-alibaba-nacos-config</artifactId>
-				<version>${spring-cloud-starter-alibaba.version}</version>
-			</dependency>
-
-			<dependency>
-				<groupId>org.springframework.cloud</groupId>
-				<artifactId>spring-cloud-starter-alibaba-nacos-discovery</artifactId>
-				<version>${spring-cloud-starter-alibaba.version}</version>
+				<groupId>microservice.integration</groupId>
+				<artifactId>microservice-integration-gateway-report</artifactId>
+				<version>${project.version}</version>
 			</dependency>
 
 			<dependency>

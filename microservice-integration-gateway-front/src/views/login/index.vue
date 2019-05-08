@@ -12,7 +12,7 @@
         <span class="svg-container">
           <svg-icon icon-class="user"/>
         </span>
-        <el-input v-model="loginForm.username" name="username" type="text" auto-complete="on" placeholder="username"/>
+        <el-input v-model="loginForm.userName" name="userName" type="text" auto-complete="on" placeholder="userName"/>
       </el-form-item>
       <el-form-item prop="password">
         <span class="svg-container">
@@ -29,15 +29,6 @@
           <svg-icon icon-class="eye"/>
         </span>
       </el-form-item>
-      <!--<el-form-item prop="verifyCode">-->
-      <!--<span class="svg-container">-->
-      <!--<svg-icon icon-class="lock"/>-->
-      <!--</span>-->
-      <!--<el-input v-model="loginForm.verifyCode" style="width: 69%" name="verifyCode" type="text" auto-complete="on" placeholder="请输入验证码" />-->
-      <!--<span>-->
-      <!--<img id="captcha" :src="BossApi" style="position: relative;margin-bottom:-14.5px" alt="验证码" @click="reloadCaptcha">-->
-      <!--</span>-->
-      <!--</el-form-item>-->
       <el-form-item>
         <el-button :loading="loading" type="primary" style="width:100%;" @click.native.prevent="handleLogin">
           登录
@@ -60,12 +51,12 @@ export default {
     return {
       BossApi: process.env.BOSS_API + '/stickyImg?w=90&h=36',
       loginForm: {
-        username: '',
+        userName: '',
         password: '',
         token: ''
       },
       loginRules: {
-        username: [{ required: true, trigger: 'blur', message: '请输入用户名' }],
+        userName: [{ required: true, trigger: 'blur', message: '请输入用户名' }],
         password: [{ required: true, trigger: 'blur', validator: validatePass }]
         // verifyCode: [{ required: true, trigger: 'blur', message: '请输入验证码' }]
       },

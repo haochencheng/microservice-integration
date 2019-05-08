@@ -11,16 +11,13 @@ import microservice.integration.gateway.service.ServiceDefinitionService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.cloud.gateway.filter.GatewayFilterChain;
 import org.springframework.cloud.gateway.filter.GlobalFilter;
 import org.springframework.core.Ordered;
-import org.springframework.http.HttpCookie;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.server.reactive.ServerHttpRequest;
 import org.springframework.http.server.reactive.ServerHttpResponse;
-import org.springframework.util.MultiValueMap;
 import org.springframework.web.server.ServerWebExchange;
 import reactor.core.publisher.Mono;
 
@@ -32,7 +29,6 @@ import java.util.Optional;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-
 /**
  * @description: 鉴权过滤器
  * @author: haochencheng
@@ -40,14 +36,9 @@ import java.util.regex.Pattern;
  **/
 public class GatewayServiceManagerAuthorizationFilter implements GlobalFilter, Ordered {
 
-    public final static  Pattern pattern=Pattern.compile("/(?i)\\w+");
-    public static final String WUID = "wuid";
     private static final List<String> FileWhiteList= Arrays.asList(".js");
     public static final String FAVICON_ICO = "favicon.ico";
     public static final String TOKEN = "token";
-
-    @Value("${spring.profiles.active}")
-    private String profile;
 
     private Logger logger= LoggerFactory.getLogger(GatewayServiceManagerAuthorizationFilter.class);
 
@@ -96,37 +87,27 @@ public class GatewayServiceManagerAuthorizationFilter implements GlobalFilter, O
         if (authorizationEnum==null){
             return MonoUtil.buildServerResponse(response, HttpStatus.NOT_ACCEPTABLE, "服务授权配置不正确");
         }
-        MultiValueMap<String, HttpCookie> cookies = request.getCookies();
         HttpHeaders headers = request.getHeaders();
         switch (authorizationEnum) {
             case NO:
                 return chain.filter(exchange);
-            case APP:
-                if (!cookies.containsKey(WUID)){
-                    return MonoUtil.getNeedLoginResult(response);
+            case LOGIN:
+                if (!headers.containsKey(TOKEN)){
+                    return MonoUtil.buildServerResponse(response, HttpStatus.UNAUTHORIZED, "token无效");
                 }
-                String wuid = cookies.get(WUID).toString();
-                if (Strings.isNullOrEmpty(wuid)){
-                    return MonoUtil.getNeedLoginResult(response);
-                }
-                ResponseResult<UserDto> userLoginResponse = authorizationFeignClient.isUserLogin(wuid);
+                ResponseResult<UserDto> userLoginResponse = authorizationFeignClient.userInfo(headers.get(TOKEN).get(0));
                 if (!userLoginResponse.isSuccessful()){
                     return MonoUtil.getNeedLoginResult(response);
                 }
-                ServerHttpRequest requestWithUserLogin = exchange.getRequest().mutate().header("userId",String.valueOf(userLoginResponse.getData().getUserId())).build();
-                //将现在的request 变成 change对象
-                return chain.filter(exchange.mutate().request(requestWithUserLogin).build());
+                return chain.filter(exchange);
             case SERVER:
                 if (!headers.containsKey(TOKEN)){
                     return MonoUtil.buildServerResponse(response, HttpStatus.UNAUTHORIZED, "token无效");
                 }
-                ResponseResult responseResult = authorizationFeignClient.authorizationBoss(headers.get(TOKEN).get(0));
+                ResponseResult responseResult = authorizationFeignClient.authorizationServer(headers.get(TOKEN).get(0));
                 if (!responseResult.isSuccessful()){
                     return MonoUtil.buildServerResponse(response, HttpStatus.UNAUTHORIZED, responseResult.getRetMsg());
                 }
-                return chain.filter(exchange);
-            case VISITORS:
-                //将现在的request 变成 change对象
                 return chain.filter(exchange);
             default:
                 return MonoUtil.buildServerResponse(response, HttpStatus.NOT_ACCEPTABLE, "服务授权配置不正确");

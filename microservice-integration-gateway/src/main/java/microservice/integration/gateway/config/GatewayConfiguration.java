@@ -29,7 +29,7 @@ import java.util.List;
 @Configuration
 public class GatewayConfiguration {
 
-    private static final String ALLOWED_HEADERS = "x-requested-with, authorization, Content-Type, Authorization, credential, X-XSRF-TOKEN,Gateway-Token,Origin , Cookie, Accept, server ";
+    private static final String ALLOWED_HEADERS = "x-requested-with, authorization, Content-Type, Authorization, credential, X-XSRF-TOKEN,token,Origin , Cookie, Accept ";
     private static final String ALLOWED_METHODS = "POST,GET,OPTIONS,PUT,DELETE";
     private static final String ALLOWED_ORIGIN = "*";
     private static final String MAX_AGE = "18000L";

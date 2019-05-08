@@ -1,0 +1,7 @@
+spring:
+  application:
+    name: microservice-integration-eureka
+  profiles:
+    active: dev
+server:
+  port: 3000

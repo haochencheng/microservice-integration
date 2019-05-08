@@ -16,7 +16,7 @@ const service = axios.create({
 service.interceptors.request.use(
   config => {
     if (store.getters.token) {
-      config.headers['Gateway-Token'] = getToken() // 让每个请求携带自定义token 请根据实际情况自行修改
+      config.headers['token'] = getToken() // 让每个请求携带自定义token 请根据实际情况自行修改
     } else {
       if (!config.url.startsWith('/user/login')) {
         this.store.dispatch('FedLogOut')

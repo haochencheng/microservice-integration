@@ -1,0 +1,9 @@
+spring:
+  application:
+    name: microservice-integration-auth
+  profiles:
+    active: dev
+server:
+  port: 4001
+  servlet:
+    path: /auth

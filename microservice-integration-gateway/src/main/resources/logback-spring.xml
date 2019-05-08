@@ -40,7 +40,7 @@
 
     <!--生产环境:打印控制台和输出到文件-->
     <springProfile name="prod">
-        <root level="INFO">
+        <root level="ERROR">
             <appender-ref ref="CONSOLE"/>
         </root>
     </springProfile>
@@ -50,7 +50,7 @@
         <!-- 打印sql -->
         <logger name="microservice.integration.gateway.repository" level="DEBUG"/>
         <logger name="com.alibaba.nacos" level="DEBUG"/>
-        <root level="DEBUG">
+        <root level="INFO">
             <appender-ref ref="CONSOLE"/>
         </root>
     </springProfile>

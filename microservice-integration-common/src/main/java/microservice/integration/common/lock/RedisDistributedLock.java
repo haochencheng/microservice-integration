@@ -24,7 +24,8 @@ public class RedisDistributedLock {
     @Autowired
     private Environment env;
 
-    private RedisTemplate<String, String> stringRedisTemplate=new RedisTemplate<>();
+    @Autowired
+    private RedisTemplate<String, String> stringRedisTemplate;
 
     private ThreadLocal<String> tokenLocal = new ThreadLocal<>();
 

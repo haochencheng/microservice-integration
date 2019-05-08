@@ -1,0 +1,18 @@
+spring:
+  cloud:
+    nacos:
+      discovery:
+        enabled: false
+#eureka
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:3000/eureka/
+
+logging:
+  level:
+    com.alibaba.nacos: debug
+
+
+
+

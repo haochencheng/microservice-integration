@@ -1,9 +1,9 @@
 package microservice.integration.gateway.filter;
 
 import com.auth0.jwt.interfaces.DecodedJWT;
+import microservice.integration.common.dto.user.UserDto;
 import microservice.integration.common.util.JwtUtil;
 import microservice.integration.common.util.MonoUtil;
-import microservice.integration.gateway.common.UserResponse;
 import microservice.integration.gateway.service.RedisService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -42,7 +42,7 @@ public class GatewayAdminAuthorizationFilter implements WebFilter, Ordered {
     private static final List<String> whiteList= Arrays.asList("/admin/user/login","/admin/user/logout");
 
     @Autowired
-    private RedisService<UserResponse> redisService;
+    private RedisService<UserDto> redisService;
 
     @Override
     public int getOrder() {
@@ -69,11 +69,11 @@ public class GatewayAdminAuthorizationFilter implements WebFilter, Ordered {
                 return chain.filter(exchange);
             }
             HttpHeaders headers = request.getHeaders();
-            List<String> strings = headers.get("Gateway-Token");
+            List<String> strings = headers.get("token");
             if (CollectionUtils.isEmpty(strings)){
                 return MonoUtil.getNeedLoginResult(response);
             }
-            UserResponse userResponse = redisService.get(strings.get(0),UserResponse.class);
+            UserDto userResponse = redisService.get(strings.get(0),UserDto.class);
             if (Objects.isNull(userResponse)){
                 return MonoUtil.getNeedLoginResult(response);
             }
