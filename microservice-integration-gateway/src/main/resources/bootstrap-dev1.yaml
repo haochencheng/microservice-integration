@@ -26,6 +26,9 @@ spring:
       discovery:
         locator:
           enabled: true
+    nacos:
+      discovery:
+        server-addr: 127.0.0.1:8848
 
 mybatis:
   configuration:
@@ -40,12 +43,6 @@ pagehelper:
 logging:
   level:
     com.ucommune.gateway.repository: trace
-
-#eureka
-eureka:
-  client:
-    service-url:
-      defaultZone: http://localhost:3000/eureka/
 
 
 

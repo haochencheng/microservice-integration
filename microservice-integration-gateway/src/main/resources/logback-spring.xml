@@ -46,7 +46,7 @@
     </springProfile>
 
     <!--开发环境:打印控制台-->
-    <springProfile name="dev">
+    <springProfile name="dev1">
         <!-- 打印sql -->
         <logger name="microservice.integration.gateway.repository" level="DEBUG"/>
         <logger name="com.alibaba.nacos" level="DEBUG"/>
