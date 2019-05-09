@@ -32,7 +32,7 @@ public class CacheRemoveAspect {
     /**
      * 截获标有@CacheRemove的方法
      */
-    @Pointcut(value = "(execution(* com.ucommune.gateway.repository.*.*(..)) && @annotation(com.ucommune.gateway.aop.CacheRemove))")
+    @Pointcut(value = "(execution(* microservice.integration.gateway.repository.*.*(..)) && @annotation(microservice.integration.gateway.aop.CacheRemove))")
     private void pointcut() {
     }
 

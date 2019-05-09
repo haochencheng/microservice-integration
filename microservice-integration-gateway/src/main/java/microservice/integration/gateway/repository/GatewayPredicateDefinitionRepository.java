@@ -2,6 +2,7 @@ package microservice.integration.gateway.repository;
 
 import microservice.integration.gateway.aop.CacheRemove;
 import microservice.integration.gateway.common.PredicateDefinitionListVo;
+import microservice.integration.gateway.config.RedisConfig;
 import microservice.integration.gateway.model.GatewayPredicateDefinition;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Param;
@@ -16,7 +17,7 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-@CacheConfig(cacheNames = "ucommune-gateway-service")
+@CacheConfig(cacheNames = RedisConfig.GATEWAY_SERVICE)
 public interface GatewayPredicateDefinitionRepository {
 
     @Select("select p.*,r.name as route_definition_name  from gateway_predicate_definition p,gateway_route_definition r where p.route_definition_id = r.id ")
