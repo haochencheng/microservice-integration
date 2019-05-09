@@ -5,9 +5,9 @@ spring:
         server-addr: 127.0.0.1:8848
         namespace: 68da671b-ef91-47e0-b5d0-d3a458bd743a
         file-extension: yaml
-      discovery:
-        server-addr: 127.0.0.1:8848
-#        enabled: false
+#      discovery:
+#        server-addr: 127.0.0.1:8848
+        enabled: false
 #eureka
 eureka:
   client:
