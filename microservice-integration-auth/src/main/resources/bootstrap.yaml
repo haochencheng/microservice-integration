@@ -6,4 +6,4 @@ spring:
 server:
   port: 4001
   servlet:
-    path: /auth
+    context-path: /auth

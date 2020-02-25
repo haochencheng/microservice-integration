@@ -46,7 +46,17 @@
     </springProfile>
 
     <!--开发环境:打印控制台-->
-    <springProfile name="dev1">
+    <springProfile name="dev">
+        <!-- 打印sql -->
+        <logger name="microservice.integration.gateway.repository" level="DEBUG"/>
+        <logger name="com.alibaba.nacos" level="DEBUG"/>
+        <root level="INFO">
+            <appender-ref ref="CONSOLE"/>
+        </root>
+    </springProfile>
+
+    <!--开发环境:打印控制台-->
+    <springProfile name="nacos">
         <!-- 打印sql -->
         <logger name="microservice.integration.gateway.repository" level="DEBUG"/>
         <logger name="com.alibaba.nacos" level="DEBUG"/>
