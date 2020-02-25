@@ -55,6 +55,16 @@
         </root>
     </springProfile>
 
+    <!--开发环境:打印控制台-->
+    <springProfile name="nacos">
+        <!-- 打印sql -->
+        <logger name="microservice.integration.gateway.repository" level="DEBUG"/>
+        <logger name="com.alibaba.nacos" level="DEBUG"/>
+        <root level="INFO">
+            <appender-ref ref="CONSOLE"/>
+        </root>
+    </springProfile>
+
     <!--测试环境:打印控制台-->
     <springProfile name="test">
         <!-- 打印sql -->

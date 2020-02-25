@@ -7,7 +7,6 @@ import org.springframework.boot.autoconfigure.web.ResourceProperties;
 import org.springframework.boot.autoconfigure.web.reactive.error.DefaultErrorWebExceptionHandler;
 import org.springframework.boot.web.reactive.error.ErrorAttributes;
 import org.springframework.context.ApplicationContext;
-import org.springframework.http.HttpStatus;
 import org.springframework.web.reactive.function.server.*;
 
 import java.util.Map;
@@ -56,11 +55,12 @@ public class GlobalExceptionHandler extends DefaultErrorWebExceptionHandler {
     /**
      * 根据code获取对应的HttpStatus
      * @param errorAttributes
+     * @return
      */
     @Override
-    protected HttpStatus getHttpStatus(Map<String, Object> errorAttributes) {
+    protected int getHttpStatus(Map<String, Object> errorAttributes) {
         int statusCode = (int) errorAttributes.get("retCode");
-        return HttpStatus.valueOf(statusCode);
+        return statusCode;
     }
 
     /**
