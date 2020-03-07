@@ -1,22 +1,19 @@
 FROM centos:7
 MAINTAINER haochencheng
 
+ENV JAVA_HOME /usr/local/jdk1.8.0_151
+ENV CLASSPATH $JAVA_HOME/lib/dt.jar:$JAVA_HOME/lib/tools.jar
+ENV PATH $PATH:$JAVA_HOME/bin
+# 设置字符集，防止乱码
+ENV LANG en_US.utf8
+ENV LC_ALL en_US.utf8
+
 # 本地下载jdk1.8 或者网络下载
 # 本地使用COPY 命令 （注意后面是当前路径的相对路径）
 # COPY dk1.8.0_151 /usr/local/
-
 # 网络下载 使用ADD 解压缩
-RUN curl -O https://repo.huaweicloud.com/java/jdk/8u151-b12/jdk-8u151-linux-x64.tar.gz \
-| tar -zxvf /usr/local/ \
-
-ENV JAVA_HOME /usr/local/jdk1.8.0_151 \
-ENV CLASSPATH $JAVA_HOME/lib/dt.jar:$JAVA_HOME/lib/tools.jar \
-ENV PATH $PATH:$JAVA_HOME/bin \
-# 设置字符集，防止乱码
-ENV LANG en_US.utf8 \
-ENV LC_ALL en_US.utf8 \
+RUN curl -O https://repo.huaweicloud.com/java/jdk/8u151-b12/jdk-8u151-linux-x64.tar.gz && tar -xzf jdk-8u151-linux-x64.tar.gz -C /usr/local/ && rm jdk-8u151-linux-x64.tar.gz  \
 # 设置时区
-RUN rm -rf /etc/localtime && ln -s /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
+&& rm -rf /etc/localtime && ln -s /usr/share/zoneinfo/Asia/Shanghai /etc/localtime \
 # 安装telnet/ifconfig（用于调测网络使用）
-RUN yum install telnet net-tools -y
-
+&& yum install telnet net-tools -y
