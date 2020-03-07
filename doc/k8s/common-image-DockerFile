@@ -4,8 +4,10 @@ MAINTAINER haochencheng
 # 本地下载jdk1.8 或者网络下载
 # 本地使用COPY 命令 （注意后面是当前路径的相对路径）
 # COPY dk1.8.0_151 /usr/local/
+
 # 网络下载 使用ADD 解压缩
-ADD https://repo.huaweicloud.com/java/jdk/8u151-b12/jdk-8u151-linux-x64.tar.gz /usr/local/
+RUN curl -O https://repo.huaweicloud.com/java/jdk/8u151-b12/jdk-8u151-linux-x64.tar.gz \
+| tar -zxvf /usr/local/ \
 
 ENV JAVA_HOME /usr/local/jdk1.8.0_151 \
 ENV CLASSPATH $JAVA_HOME/lib/dt.jar:$JAVA_HOME/lib/tools.jar \
