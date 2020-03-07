@@ -2,7 +2,7 @@ FROM centos:7
 MAINTAINER haochencheng
 
 # 下载jdk1.8
-ADD /Users/haochencheng/Downloads/jdk1.8.0_151 /usr/local/
+COPY /Users/haochencheng/Downloads/jdk1.8.0_151 /usr/local/
 
 ENV JAVA_HOME /usr/local/jdk1.8.0_151
 ENV CLASSPATH $JAVA_HOME/lib/dt.jar:$JAVA_HOME/lib/tools.jar
