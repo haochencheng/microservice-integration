@@ -12,16 +12,13 @@ export JAVA_HOME
 export JAVA="$JAVA_HOME/bin/java"
 
 ## app name
-APP_NAME=eureka
+APP_NAME=${APP_NAME}
 
-APP_PORT=3000
-
-PWD=`pwd`
-echo ${PWD}
+APP_PORT=${APP_PORT}
 
 ## java jar包路径
-#APP_HOME=/springcloud/${APP_NAME}/
-APP_HOME=${PWD}/target
+APP_HOME=${APP_HOME}
+
 # echo "APP_HOME====${APP_HOME}"
 
 [[ ! -d ${APP_HOME} ]] && mkdir -p ${APP_HOME}

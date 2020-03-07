@@ -1,0 +1,16 @@
+FROM centos:7
+MAINTAINER haochencheng
+
+# 下载jdk1.8
+ADD /Users/haochencheng/Downloads/jdk1.8.0_151 /usr/local/
+
+ENV JAVA_HOME /usr/local/jdk1.8.0_151
+ENV CLASSPATH $JAVA_HOME/lib/dt.jar:$JAVA_HOME/lib/tools.jar
+ENV PATH $PATH:$JAVA_HOME/bin
+# 设置字符集，防止乱码
+ENV LANG en_US.utf8
+ENV LC_ALL en_US.utf8
+# 设置时区
+RUN rm -rf /etc/localtime && ln -s /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
+# 安装telnet/ifconfig（用于调测网络使用）
+RUN yum install telnet net-tools -y
