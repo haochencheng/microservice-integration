@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name:  jenkins-pv
+spec:
+  capacity:
+    storage: 5Gi
+  accessModes:
+  - ReadWriteMany
+  persistentVolumeReclaimPolicy: Recycle
+  mountOptions:
+    - nfsvers=4 
+    - nolock
+    - vers=3
+  nfs:
+    path: /opt/nfs-data/
+    server: 192.168.1.5

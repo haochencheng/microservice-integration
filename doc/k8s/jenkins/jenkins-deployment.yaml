@@ -17,13 +17,15 @@ spec:
     spec:
       containers:
       - name: jenkins
-        image: registry.cn-hangzhou.aliyuncs.com/haochencheng/jenkins:jenkins-cc
+        image: jenkins:1.1
         imagePullPolicy: IfNotPresent
+        securityContext:
+          privileged: true
         volumeMounts:
         - name: jenkins-home
-          mountPath: /opt/jenkins_home
+          mountPath: /var/jenkins_home/
         - name: maven-repository
-          mountPath: /Users/haochencheng/Workspace/maven-repo
+          mountPath: /usr/share/maven/ref/repository
         - name: docker
           mountPath: /usr/bin/docker
         - name: docker-sock
@@ -33,8 +35,8 @@ spec:
         - containerPort: 30000
       volumes:
         - name: jenkins-home
-          hostPath:
-            path: /opt/jenkins_home
+          persistentVolumeClaim:          
+            claimName: jenkins-pvc
         - name: maven-repository
           hostPath:
             path: /Users/haochencheng/Workspace/maven-repo

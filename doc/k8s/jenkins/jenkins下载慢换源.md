@@ -8,8 +8,10 @@ https://mirrors.tuna.tsinghua.edu.cn/jenkins/updates/update-center.json
 
 以上的配置Json其实在Jenkins的工作目录中
 
-$ cd {你的Jenkins工作目录}/updates  #进入更新配置位置
-Bash
+$ cd {你的Jenkins工作目录}/updates 
+
+ #进入更新配置位置
+
 第一种方式：使用vim
 $ vim default.json   #这个Json文件与上边的配置文件是相同的
 Bash
@@ -28,7 +30,23 @@ Bash
 修改完成保存退出:wq
 
 第二种方式：使用sed
-$ sed -i 's/http:\/\/updates.jenkins-ci.org\/download/https:\/\/mirrors.tuna.tsinghua.edu.cn\/jenkins/g' default.json && sed -i 's/http:\/\/www.google.com/https:\/\/www.baidu.com/g' default.json
+
+```sh
+sed -i 's/http:\/\/updates.jenkins-ci.org\/download/https:\/\/mirrors.tuna.tsinghua.edu.cn\/jenkins/g' default.json && sed -i 's/http:\/\/www.google.com/https:\/\/www.baidu.com/g' default.json
+```
+
+
+
+```
+CMD ["sed" "-i" "'s/https:\/\/updates.jenkins.io\/update-center.json/https:\/\/mirrors.tuna.tsinghua.edu.cn\/jenkins\/updates\/update-center.json/g' ${JENKINS_HOME}/hudson.model.UpdateCenter.xml"]
+```
+
+
+
+
+
+
+
 Bash
 这是直接修改的配置文件，如果前边Jenkins用sudo启动的话，那么这里的两个sed前均需要加上sudo
 
