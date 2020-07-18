@@ -17,7 +17,7 @@
     "start1": "node build/dev-server.js"
   },
   "dependencies": {
-    "axios": "0.18.0",
+    "axios": "0.19.2",
     "codemirror": "^5.41.0",
     "element-ui": "2.4.6",
     "js-cookie": "2.2.0",
