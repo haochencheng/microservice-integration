@@ -8,7 +8,7 @@ docker pull jenkins
 
 此处直接将`jenkins-admin`集成了`cluster-admin`权限，可根据自己具体需要进行权限的设置。
 
-jenkins-account.yaml
+jenkins-rbac.yaml
 
 ```yml
 apiVersion: v1

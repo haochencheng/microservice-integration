@@ -8,15 +8,12 @@ metadata:
   annotations:
     prometheus.io/scrape: 'true'
 spec:
+  selector:
+    k8s-app: jenkins
   ports:
     - name: jenkins
       port: 8080
-      nodePort: 31888
       targetPort: 8080
     - name: jenkins-agent
-      port: 30000
-      nodePort: 30000
-      targetPort: 30000
-  type: NodePort
-  selector:
-    k8s-app: jenkins
+      port: 50000
+      targetPort: 50000

@@ -14,4 +14,4 @@ spec:
     - vers=3
   nfs:
     path: /opt/nfs-data/
-    server: 192.168.1.5
+    server: 192.168.43.85

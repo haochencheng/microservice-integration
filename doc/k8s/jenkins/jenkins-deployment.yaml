@@ -23,7 +23,7 @@ spec:
           privileged: true
         volumeMounts:
         - name: jenkins-home
-          mountPath: /var/jenkins_home/
+          mountPath: /opt/jenkins_home/
         - name: maven-repository
           mountPath: /usr/share/maven/ref/repository
         - name: docker
@@ -32,7 +32,7 @@ spec:
           mountPath: /var/run/docker.sock
         ports:
         - containerPort: 8080
-        - containerPort: 30000
+        - containerPort: 50000
       volumes:
         - name: jenkins-home
           persistentVolumeClaim:          

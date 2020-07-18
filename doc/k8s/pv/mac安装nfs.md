@@ -47,3 +47,7 @@ access denied by server while mounting
 ```
 
 重启nfs
+/opt/nfs-data -alldirs  -maproot=root:wheel -rw -network=192.168.0.0 -mask=255.255.0.0
+
+
+sudo mount -t nfs -o nolock,nfsvers=3,vers=3 192.168.43.85:/opt/nfs-data /tmp/test
