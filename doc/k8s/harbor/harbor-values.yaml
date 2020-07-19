@@ -1,0 +1,25 @@
+expose:
+  type: ingress
+  ingress:
+    hosts:
+      core: harbor.k8sinternal.com
+      notary: notary.k8sinternal.com
+    annotations:
+      kubernetes.io/ingress.class: "nginx"
+
+externalURL: http://harbor.k8sinternal.com
+
+persistence:
+  enabled: true
+  resourcePolicy: "keep"
+  persistentVolumeClaim:
+    registry:
+      storageClass: "course-nfs-storage"
+    chartmuseum:
+      storageClass: "course-nfs-storage"
+    jobservice:
+      storageClass: "course-nfs-storage"
+    database:
+      storageClass: "course-nfs-storage"
+    redis:
+      storageClass: "course-nfs-storage"

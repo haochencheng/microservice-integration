@@ -13,7 +13,7 @@ RUN  cp /usr/share/zoneinfo/Asia/Shanghai /etc/localtime && echo Asia/Shanghai >
   && rm -f /tmp/apache-maven.tar.gz \
   && ln -s /usr/share/maven/bin/mvn /usr/bin/mvn \
   && usermod -aG 1000 jenkins \
-  && chown 1000:1000 /usr/share/maven/ref/repository
+  && chown 1000:1000 /usr/share/maven/ref/repository 
   
 ENV MAVEN_HOME /usr/share/maven
 VOLUME ["/usr/share/maven/ref/repository"]

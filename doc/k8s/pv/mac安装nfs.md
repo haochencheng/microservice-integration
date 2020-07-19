@@ -32,8 +32,6 @@ sudo vi /etc/exports
   showmount -e 192.168.99.1
 ```
 
-
-
 k8s 挂载出现
 
 ```
@@ -46,8 +44,21 @@ access denied by server while mounting
  nfs.server.mount.require_resv_port = 0 
 ```
 
+检查是否正确
+```bash
+ sudo nfsd checkexports
+```
 重启nfs
+
+修改配置
+
+```bash
+sudo vim /etc/exports
+##  改为：
 /opt/nfs-data -alldirs  -maproot=root:wheel -rw -network=192.168.0.0 -mask=255.255.0.0
+```
 
-
+本地挂载  
+```bash
 sudo mount -t nfs -o nolock,nfsvers=3,vers=3 192.168.43.85:/opt/nfs-data /tmp/test
+```
