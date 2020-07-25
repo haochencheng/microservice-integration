@@ -15,45 +15,46 @@ cd harbor
 使用![harbor-values.yaml](harbor-values.yaml)进行安装
 在解压出来的目录里面执行，注意这里的.表示当前所在目录。
 ```bash
-helm install . --name harbor --namespace kube-ops -f ../harbor-values.yaml
+helm install . --name harbor --namespace harbor -f ../harbor-values.yaml
 ```
 
 查看ingress资源对象
 ```bash
-kubectl get ing -o wide -n kube-ops
+kubectl get ing -o wide -n harbor
+```
+安装完成后在 host中添加 映射
+```
+127.0.0.1 harbor.k8sinternal.com
 ```
 
-浏览器中输入harbor.k8sinternal.com查看
+浏览器中输入 harbor.k8sinternal.com 查看
 
-然后输入用户名：admin，密码：Harbor12345
-（也可以通过 Helm 安装的时候自己覆盖 harborAdminPassword）
-即可登录进入 Portal 首页 
+然后输入用户名,密码：
+```
+admin
+Harbor12345
+```
 
-查看是否安装成功
-```bash
- kubectl get pod -n kube-ops
+没有使用证书 报401
 ```
-查看release：
-```bash
-helm list
+Error response from daemon: Get https://harbor.k8sinternal.com/v2/: unauthorized: authentication required
 ```
-打包chart：
-```bash
-helm package hello-helm
-```
-然后我们就可以将打包的tgz文件分发到任意的服务器上，通过helm fetch就可以获取到该 Chart 了
 
-删除release：
-```bash
- helm delete winning-zebra
+修改nginx配置关闭ssl转发
+```
+    "ingress.kubernetes.io/ssl-redirect": "false",
+      "nginx.ingress.kubernetes.io/ssl-redirect": "false"
 ```
 
 
 
+也可以通过 Helm 安装的时候自己覆盖 harborAdminPassword  
+即可登录进入 Portal 首页
 
 docker cli测试login,pull,push
+测试使用 docker cli 来进行 pull/push 镜像
 
+```bash
+ docker login harbor.k8sinternal.com
+```
 
-
-
-    

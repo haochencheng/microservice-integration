@@ -23,7 +23,7 @@ spec:
           privileged: true
         volumeMounts:
         - name: jenkins-home
-          mountPath: /var/jenkins_home
+          mountPath: /var/jenkins_home/
         - name: maven-repository
           mountPath: /usr/share/maven/ref/repository
         - name: docker
