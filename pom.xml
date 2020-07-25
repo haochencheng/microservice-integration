@@ -29,7 +29,8 @@
 		<java.version>1.8</java.version>
 		<spring-cloud.version>Hoxton.SR1</spring-cloud.version>
 		<microservice-integration-common.version>0.0.1-SNAPSHOT</microservice-integration-common.version>
-		<spring.cloud.alibaba.version>0.9.0.RELEASE</spring.cloud.alibaba.version>
+		<spring.cloud.alibaba.version>0.2.2.RELEASE</spring.cloud.alibaba.version>
+		<nacos.client>1.1.0</nacos.client>
 		<commons-beanutils>1.9.3</commons-beanutils>
 		<fastjson>1.2.49</fastjson>
 		<commons-lang3>3.8</commons-lang3>
@@ -58,6 +59,12 @@
 				<version>${spring.cloud.alibaba.version}</version>
 				<type>pom</type>
 				<scope>import</scope>
+			</dependency>
+
+			<dependency>
+				<groupId>com.alibaba.nacos</groupId>
+				<artifactId>nacos-client</artifactId>
+				<version>${nacos.client}</version>
 			</dependency>
 
 			<dependency>
