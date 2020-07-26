@@ -1,10 +1,6 @@
-server:
-  port: 4002
-  servlet:
-    context-path: /app
 spring:
   application:
-    name: microservice-integration-app
+    name: microservice-integration-order
   profiles:
     active: dev
   cloud:
@@ -16,14 +12,11 @@ spring:
       discovery:
         server-addr: 127.0.0.1:8848
         namespace: dev
-  main:
-    # 解决Bean重复定义问题
-    allow-bean-definition-overriding: true
 dubbo:
   protocol:
     name: dubbo
+    port: 4003
   registry:
     address: nacos://${spring.cloud.nacos.config.server-addr}?namespace=${spring.cloud.nacos.discovery.namespace}
   application:
     name: ${spring.application.name}
-

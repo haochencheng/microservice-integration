@@ -1,4 +1,4 @@
-package microservice.integration.app;
+package microservice.integration.order;
 
 import org.apache.dubbo.config.spring.context.annotation.EnableDubbo;
 import org.springframework.boot.SpringApplication;
@@ -13,10 +13,10 @@ import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 @SpringBootApplication
 @EnableDiscoveryClient
 @EnableDubbo
-public class AppApplication {
+public class OrderApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(AppApplication.class);
+        SpringApplication.run(OrderApplication.class);
     }
 
 }
