@@ -17,6 +17,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.cloud.client.ServiceInstance;
 import org.springframework.cloud.client.discovery.DiscoveryClient;
 import org.springframework.cloud.netflix.eureka.EurekaDiscoveryClient;
+import org.springframework.cloud.netflix.eureka.EurekaServiceInstance;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
 import org.springframework.core.env.Environment;
@@ -61,17 +62,23 @@ public class GatewayServiceReportHandler implements ApplicationContextAware {
             return null;
         }
         List<String> services = discoveryClient.getServices();
-        if (!services.contains(GATEWAY_APPLICATION_NAME)){
+        if (services.isEmpty()){
             logger.error("no available gateway service !could not report services to gateway");
             return null;
         }
         List<ServiceInstance> instances = discoveryClient.getInstances(GATEWAY_APPLICATION_NAME);
-        if (Objects.isNull(instances)){
+        if (instances.isEmpty()){
             logger.error("no available gateway instance !could not report services to gateway");
             return null;
         }
-        EurekaDiscoveryClient.EurekaServiceInstance serviceInstance =(EurekaDiscoveryClient.EurekaServiceInstance) instances.get(0);
-        return serviceInstance.getInstanceInfo().getHomePageUrl();
+        ServiceInstance serviceInstance = instances.get(0);
+        String reportUrl;
+        if (serviceInstance.isSecure()){
+            reportUrl="https://";
+        }else {
+            reportUrl="http://";
+        }
+        return reportUrl+serviceInstance.getHost()+":"+serviceInstance.getPort();
     }
 
     private List<ServiceInfo> getServiceInfoList(ApplicationContext applicationContext) {

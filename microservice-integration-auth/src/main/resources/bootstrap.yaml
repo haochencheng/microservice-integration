@@ -1,9 +1,21 @@
+server:
+  port: 4001
+  servlet:
+    context-path: /auth
 spring:
   application:
     name: microservice-integration-auth
   profiles:
     active: dev
-server:
-  port: 4001
-  servlet:
-    context-path: /auth
+  cloud:
+    nacos:
+      config:
+        server-addr: 127.0.0.1:8848
+        file-extension: yaml
+      discovery:
+        server-addr: 127.0.0.1:8848
+
+
+
+
+

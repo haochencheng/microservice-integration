@@ -25,6 +25,7 @@ import javax.annotation.Resource;
 import java.net.URI;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Objects;
 import java.util.Optional;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -84,7 +85,7 @@ public class GatewayServiceManagerAuthorizationFilter implements GlobalFilter, O
         }
         //鉴权
         AuthorizationEnum authorizationEnum = serviceDefinitionService.isNeedAuthorization(servicePath);
-        if (authorizationEnum==null){
+        if (Objects.isNull(authorizationEnum)){
             return MonoUtil.buildServerResponse(response, HttpStatus.NOT_ACCEPTABLE, "服务授权配置不正确");
         }
         HttpHeaders headers = request.getHeaders();

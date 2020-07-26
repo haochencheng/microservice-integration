@@ -1,20 +1,12 @@
 spring:
   cloud:
     nacos:
+      discovery:
+        #enabled 控制是否开启nacos注册
+        namespace: dev
       config:
         namespace: dev
-        file-extension: yaml
-      discovery:
-        namespace: dev
-logging:
-  level:
-    com.alibaba.nacos: info
-
-
-
-
-
-
-
-
-
+# 关闭eureka注册
+eureka:
+  client:
+    enabled: false
