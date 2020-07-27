@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
+ * dubbo 消费者使用示例
  * @description:
  * @author: haochencheng
  * @create: 2020-07-26 17:57
@@ -17,7 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/order")
 public class OrderController {
 
-    @DubboReference
+//    @DubboReference
     private OrderService orderService;
 
     @GetMapping("/create")

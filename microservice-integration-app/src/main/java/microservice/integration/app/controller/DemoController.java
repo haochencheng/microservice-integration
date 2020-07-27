@@ -9,6 +9,10 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
+ * 服务鉴权示例
+ * /info AuthorizationEnum.SERVER 授权模式
+ * /list AuthorizationEnum.LOGIN 登录授权模式
+ * /no AuthorizationEnum.NO 不需要授权模式
  * @description:
  * @author: haochencheng
  * @create: 2019-05-08 13:23

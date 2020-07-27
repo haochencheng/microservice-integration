@@ -12,10 +12,8 @@ spring:
       config:
         server-addr: 127.0.0.1:8848
         file-extension: yaml
-        namespace: dev
       discovery:
         server-addr: 127.0.0.1:8848
-        namespace: dev
   main:
     # 解决Bean重复定义问题
     allow-bean-definition-overriding: true
@@ -26,4 +24,6 @@ dubbo:
     address: nacos://${spring.cloud.nacos.config.server-addr}?namespace=${spring.cloud.nacos.discovery.namespace}
   application:
     name: ${spring.application.name}
-
+  consumer:
+    # 关闭启动检查
+    check: false

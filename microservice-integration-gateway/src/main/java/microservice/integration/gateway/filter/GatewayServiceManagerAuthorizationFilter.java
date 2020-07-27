@@ -85,9 +85,9 @@ public class GatewayServiceManagerAuthorizationFilter implements GlobalFilter, O
         }
         //鉴权
         AuthorizationEnum authorizationEnum = serviceDefinitionService.isNeedAuthorization(servicePath);
-        if (Objects.isNull(authorizationEnum)){
-            return MonoUtil.buildServerResponse(response, HttpStatus.NOT_ACCEPTABLE, "服务授权配置不正确");
-        }
+//        if (Objects.isNull(authorizationEnum)){
+//            return MonoUtil.buildServerResponse(response, HttpStatus.NOT_ACCEPTABLE, "服务授权配置不正确");
+//        }
         HttpHeaders headers = request.getHeaders();
         switch (authorizationEnum) {
             case NO:

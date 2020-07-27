@@ -59,7 +59,12 @@ public class GlobalExceptionHandler extends DefaultErrorWebExceptionHandler {
      */
     @Override
     protected int getHttpStatus(Map<String, Object> errorAttributes) {
-        int statusCode = (int) errorAttributes.get("retCode");
+        int statusCode;
+        if (errorAttributes.containsKey("status")){
+            statusCode = (int) errorAttributes.get("status");
+        }else {
+            statusCode = (int) errorAttributes.get("retCode");
+        }
         return statusCode;
     }
 

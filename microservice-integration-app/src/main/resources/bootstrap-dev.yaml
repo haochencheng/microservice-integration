@@ -3,6 +3,7 @@ spring:
     nacos:
       discovery:
         namespace: dev
+
       config:
         namespace: dev
 # 关闭eureka注册

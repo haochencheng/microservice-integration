@@ -75,10 +75,6 @@
                     <artifactId>nacos-client</artifactId>
                     <groupId>com.alibaba.nacos</groupId>
                 </exclusion>
-                <exclusion>
-                    <artifactId>spring-cloud-alibaba-nacos-discovery</artifactId>
-                    <groupId>org.springframework.cloud</groupId>
-                </exclusion>
             </exclusions>
         </dependency>
 

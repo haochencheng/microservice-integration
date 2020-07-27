@@ -46,11 +46,12 @@ public class ServiceDefinitionServiceImpl implements ServiceDefinitionService {
     @Override
     public boolean isServiceAvailable(String servicePath, HttpMethod httpMethod) {
         if (!serviceDefinitionRepository.isServiceExist(servicePath)) {
-            return false;
+            // 默认服务未配置 不需要鉴权
+            return true;
         }
         int id = serviceDefinitionRepository.getServiceIdByServicePath(servicePath);
         if (id == 0) {
-            return false;
+            return true;
         }
         ServiceDefinition serviceDefinition = serviceDefinitionRepository.getServiceDefinitionById(id);
         if (Objects.isNull(serviceDefinition)) {
@@ -81,7 +82,7 @@ public class ServiceDefinitionServiceImpl implements ServiceDefinitionService {
     public AuthorizationEnum isNeedAuthorization(String servicePath) {
         int id = serviceDefinitionRepository.getServiceIdByServicePath(servicePath);
         if (id == 0) {
-            return null;
+            return AuthorizationEnum.NO;
         }
         ServiceDefinition serviceDefinition = serviceDefinitionRepository.getServiceDefinitionById(id);
         return AuthorizationEnum.getEnumByCode(serviceDefinition.getNeedAuthorization());

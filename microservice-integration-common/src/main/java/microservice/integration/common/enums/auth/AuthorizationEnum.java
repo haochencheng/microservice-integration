@@ -38,7 +38,7 @@ public enum AuthorizationEnum {
     }
 
     public static AuthorizationEnum getEnumByCode(int code){
-        return Arrays.stream(AuthorizationEnum.values()).filter(authorizationEnum -> authorizationEnum.getCode()==code).findAny().orElse(null);
+        return Arrays.stream(AuthorizationEnum.values()).filter(authorizationEnum -> authorizationEnum.getCode()==code).findAny().orElse(NO);
     }
 }
 
