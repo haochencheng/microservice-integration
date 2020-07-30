@@ -31,7 +31,7 @@
 		<dubbo-spring-boot-starter.version>2.7.7</dubbo-spring-boot-starter.version>
 		<dubbo-registry-nacos.version>2.7.7</dubbo-registry-nacos.version>
 		<nacos.client>[1.2.1,)</nacos.client>
-		<commons-beanutils>1.9.3</commons-beanutils>
+		<commons-beanutils>1.9.4</commons-beanutils>
 		<fastjson>[1.2.49,)</fastjson>
 		<commons-lang3>3.8</commons-lang3>
 		<javax.servlet-api>4.0.1</javax.servlet-api>
