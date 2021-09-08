@@ -27,7 +27,7 @@
 		<spring-cloud.version>Hoxton.SR6</spring-cloud.version>
 		<microservice-integration-common.version>0.0.1-SNAPSHOT</microservice-integration-common.version>
 		<spring.cloud.alibaba.version>0.2.2.RELEASE</spring.cloud.alibaba.version>
-		<dubbo.version>2.7.7</dubbo.version>
+		<dubbo.version>2.7.13</dubbo.version>
 		<dubbo-spring-boot-starter.version>2.7.7</dubbo-spring-boot-starter.version>
 		<dubbo-registry-nacos.version>2.7.7</dubbo-registry-nacos.version>
 		<nacos.client>[1.2.1,)</nacos.client>
